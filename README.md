@@ -18,8 +18,8 @@
 
 ## Live Demo
 
-- **Frontend:** [JobNexus App](https://job-portal-resume-builder.vercel.app)
-- **Backend API:** [JobNexus Backend](https://job-portal-backend-hptt.onrender.com)
+- **Frontend:** [JobNexus App](https://job-nexus-omega.vercel.app) (Deployed on Vercel)
+- **Backend API:** [JobNexus Backend](https://job-nexus-backend.onrender.com) (Deployed on Render)
 
 ---
 
@@ -345,45 +345,51 @@ npm run dev
 
 ## Build & Deployment
 
-### Frontend (Vercel)
+### Frontend (Vercel) ✅ Live
 
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
-- **SPA rewrite** configured in `vercel.json`
+**Live URL:** https://job-nexus-omega.vercel.app
 
-### Vercel Deployment Notes
+**Deployment Steps:**
+1. Import repository on Vercel (https://vercel.com)
+2. Set **Project Root** to repository root
+3. Build Command: `npm run build`
+4. Output Directory: `dist`
+5. Add Environment Variables:
+   - `VITE_API_URL` = `https://job-nexus-backend.onrender.com`
+   - `NODE_ENV` = `production`
+6. Deploy
 
-- Recommended: set the **Project Root** to the repository root and use the frontend build command `npm run build` with output directory `dist`.
- - If your Vercel project is configured with the `backend` folder as the project root, the frontend will not install correctly because Vercel only installs dependencies from the selected root. For a clean Vercel deploy, use the repository root as the project root.
- - On Vercel, set the following environment variables in the project settings:
-   - `VITE_API_URL` → the public backend API URL (for example `https://jobnexus-backend.onrender.com`)
-   - `NODE_ENV=production`
- - Do not deploy the backend from Vercel unless you convert it to a full Vercel Serverless/API deployment; the current backend is best hosted separately (Render, Heroku, or another Node host) and referenced by `VITE_API_URL`.
- 
-### Recommended Vercel Settings
- 
- - **Framework Preset:** Vite
- - **Install Command:** `npm install`
- - **Build Command:** `npm run build`
- - **Output Directory:** `dist`
- 
-### When using the repository root as the Vercel project root
- 
-1. Import the repo on Vercel.
-2. Set the root path to the repository root.
-3. Configure the environment variable `VITE_API_URL` to your backend URL.
-4. Deploy.
- 
-If you want, I can also help you configure the Vercel project step-by-step in the dashboard with the exact values for your backend URL.
-```env
-CORS_ORIGINS=https://job-portal-resume-builder.vercel.app
-```
+**Configuration Files:**
+- `vercel.json` - Contains SPA routing rules to serve static assets directly and fallback other routes to index.html
 
-### Optional for Vercel preview deployments
+### Backend (Render) ✅ Live
 
-```env
-ALLOW_VERCEL_PREVIEWS=true
-```
+**Live URL:** https://job-nexus-backend.onrender.com
+
+**Deployment Steps:**
+1. Go to Render (https://render.com)
+2. Create Web Service and connect Job-Nexus repository
+3. Configure:
+   - **Root Directory:** `backend`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+4. Add Environment Variables in Render Dashboard:
+   ```env
+   MONGO_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/?appName=Cluster0
+   NODE_ENV=production
+   JWT_SECRET=your-secret-key-here
+   CORS_ORIGINS=https://job-nexus-omega.vercel.app
+   ALLOW_VERCEL_PREVIEWS=true
+   ```
+5. Deploy
+
+**Important Setup Notes:**
+- MongoDB Atlas: Whitelist Render's IP address (or use `0.0.0.0/0` for testing)
+- The `CORS_ORIGINS` value must match your Vercel frontend URL exactly (no trailing slash)
+- `JWT_SECRET` must be a strong random string
+
+**Configuration Files:**
+- `render.yaml` - Specifies build and start commands for Render deployment
 
 ---
 
