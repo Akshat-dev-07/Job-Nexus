@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <link href="https://db.onlinewebfonts.com/c/3b24b4e4737b288d2415b418b8c7aaef?family=CMU+Serif+Roman" rel="stylesheet">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>resume-builder</title>
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark =
+            window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
+          if (theme === "dark") document.documentElement.classList.add("dark");
+        } catch (e) {
+          // ignore
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

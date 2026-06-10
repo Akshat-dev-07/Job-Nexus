@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* Tailwind v4: enable `dark:` variant via `.dark` class on the root element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+	html {
+		color-scheme: light;
+	}
+
+	html.dark {
+		color-scheme: dark;
+	}
+
+	body {
+		@apply bg-stone-100 text-stone-900;
+	}
+
+	html.dark body {
+		@apply bg-stone-950 text-stone-50;
+	}
+}
+
+/* Global dark-mode mappings for commonly used Tailwind tokens in this repo.
+	 This keeps the toggle "fully functioning" without rewriting every component.
+	 Use :where(...) to keep specificity low so hover/focus utilities still win. */
+@layer utilities {
+	.dark :where(.bg-stone-50) {
+		@apply bg-stone-900;
+	}
+
+	.dark :where(.bg-stone-100) {
+		@apply bg-stone-950;
+	}
+
+	.dark :where(.bg-stone-200) {
+		@apply bg-stone-800;
+	}
+
+	.dark :where(.bg-white) {
+		@apply bg-stone-900;
+	}
+
+	.dark :where(.border-stone-100) {
+		@apply border-stone-800;
+	}
+
+	.dark :where(.border-stone-200) {
+		@apply border-stone-800;
+	}
+
+	.dark :where(.border-stone-300) {
+		@apply border-stone-700;
+	}
+
+	.dark :where(.text-stone-900) {
+		@apply text-stone-50;
+	}
+
+	.dark :where(.text-stone-950) {
+		@apply text-stone-50;
+	}
+
+	.dark :where(.text-stone-800) {
+		@apply text-stone-100;
+	}
+
+	.dark :where(.text-stone-700) {
+		@apply text-stone-200;
+	}
+
+	.dark :where(.text-stone-600) {
+		@apply text-stone-300;
+	}
+
+	.dark :where(.text-stone-500) {
+		@apply text-stone-400;
+	}
+
+	.dark :where(.text-stone-400) {
+		@apply text-stone-500;
+	}
+}

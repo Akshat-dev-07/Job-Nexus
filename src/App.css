@@ -1,0 +1,78 @@
+
+/* *{
+    font-family: 'CMU Serif Roman', serif;
+}
+
+.font-link{
+    font-family: 'CMU Serif Roman', serif;
+} */
+/* Font imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Inter", "CMU Serif Roman", serif;
+}
+
+.font-link {
+  font-family: "Inter", "CMU Serif Roman", serif;
+}
+
+/* Resume preview specific styles */
+.resume-preview {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+.resume-preview .section {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  input,
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Print styles for better PDF generation */
+@media print {
+  .resume-preview {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .resume-preview .section {
+    margin-bottom: 1rem;
+    page-break-inside: avoid;
+  }
+
+  .bg-gray-50 {
+    background-color: transparent !important;
+    border: 1px solid #e5e7eb;
+  }
+}
+
+/* Smooth transitions */
+.transition-colors {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for webkit browsers */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
