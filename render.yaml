@@ -13,6 +13,6 @@ services:
           name: mongodb
           property: connectionString
       - key: CORS_ORIGINS
-        value: https://job-portal-resume-builder.vercel.app
+        value: https://job-nexus-omega.vercel.app
       - key: ALLOW_VERCEL_PREVIEWS
         value: "true"
