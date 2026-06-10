@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: job-nexus-backend
+    dir: backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        fromDatabase:
+          name: mongodb
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: https://job-portal-resume-builder.vercel.app
+      - key: ALLOW_VERCEL_PREVIEWS
+        value: "true"
